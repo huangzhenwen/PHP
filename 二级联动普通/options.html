@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>省市二级联动下拉菜单</title>
+<script>
+/*
+ * option类：JavaScript内置类，用于生成option选项，完成下拉菜单
+ 	语法：
+ 		new option(name , value)
+ 	参数：
+ 		name	选项名
+ 		value	选项值
+ */
+
+function createSheng(){
+	//定义省字符串，split为数组
+	var string = '请选择，广东省，江西省，湖北省，福建省，云南省，湖南省，四川省，河北省，河南省，山东省，陕西省，山西省';
+	var sheng = string.split('，');
+
+	//循环为select标签添加option
+	for(var i in sheng){
+		//实例化Option类，生成option选项
+		var op = new Option(sheng[i],i);
+		//获取select标签
+		document.getElementById('sheng').options.add(op);
+	}
+	
+	
+}
+
+//参数：
+//num：下拉列表的值,省的value
+function createCity(num){
+
+	//定义市，
+	var city = new Array();
+	city[0] = new Array('请选择');
+	city[1] = new Array('广州市','中山市','清远市','东莞市','佛山市','河源市');
+	city[2] = new Array('赣州','南京市');
+	city[3] = new Array('石家庄','黄冈');
+	
+	//拼接对应的城市数组
+	var c = city[num];
+	
+	//获取city选项对象
+	var cityID = document.getElementById('city');
+	
+	//清空原有的选项
+	//while(cityID.length){
+	//	cityID.remove(cityID.length-1);
+	//}
+	cityID.length=0; //直接将下拉框的长度length置0，即可完成清空
+	
+	//循环为select标签添加option
+	for(var i in c){
+		//实例化Option类，生成option选项
+		var op = new Option(c[i]);
+		//获取select标签
+		cityID.options.add(op);
+	}
+	
+}
+	
+window.onload = function(){
+	//调用createSheng实现初始化
+	createSheng();
+};
+</script>
+
+</head>
+<body>
+
+<select id='sheng' onchange="createCity(this.value)"></select>
+<select id='city' >
+	<option>请选择</option>
+</select>
+</body>
+</html>

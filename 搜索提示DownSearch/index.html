@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>下拉搜索：</title>
+<style type='text/css'>
+	#tip {width:266px; height:auto; border:1px solid #C2C2C2; display:none;}
+	#keyword { height:25px;}
+	#btn {height:35px}
+</style>
+<script src='../frame2.js'></script>
+<script>
+window.onload = function(){
+	
+	//为搜索框添加键盘按下事件
+	$('keyword').onkeyup = function(){
+		//获取搜索框的内容
+		var keyword = $('keyword').value;
+		
+		//判断：当搜索框为空，不显示提示框
+		if(keyword == ''){
+			$('tip').style.display = 'none';
+			return;
+		}
+		
+		//发送post请求
+		$.post('search.php', 'keyword='+keyword , function(msg){
+			//判断长度是否大于0，判断是否有数据
+			if (msg.length > 0) {
+
+				//清空原有提示搜索
+				$('tip').innerHTML = '';
+				
+				//遍历数据，添加到div中
+				for (var i = 0; i < msg.length; i++) {
+					//1 生成一个div
+					var div = document.createElement('div');
+					//2 将提示搜索放入新建的div中
+					div.innerHTML = msg[i].c_name;
+					
+					//3 为每个div添加悬浮事件：实现背景色
+					div.onmouseover = function(){
+						this.style.background='#ccc';
+					};
+					//4 为每个div添加鼠标离开：实现取消背景色
+					div.onmouseout = function(){
+						this.style.background = '#fff';
+					};
+					//5 为每个div添加鼠标点击事件：将所选点击内容显示在搜索框中，取消提示框
+					div.onclick = function(){
+						$('keyword').value = this.innerHTML;
+						$('tip').style.display = 'none';
+					};
+					
+					//6 将div追加到tip中
+					$('tip').appendChild(div);
+					
+				}
+				
+				//7 显示提示搜索框tip
+				$('tip').style.display = 'block';
+			}
+			
+		},'json');
+	
+	};
+	
+};
+	
+</script>
+</head>
+<body>
+<img src='baidu.png'/>
+<br/>
+<input type='text' id='keyword'  size='40' />
+<input type='button' id='btn' value='Search' />
+<br/>
+<div id='tip'></div>
+
+</body>
+</html>

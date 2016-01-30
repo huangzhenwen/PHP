@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>图片的淡入与淡出</title>
+<style type='text/css'>
+*{margin:0;padding:0;}
+</style>
+<script src='jquery.js'></script>
+<script>
+$(function(){
+	//方法1：hover(over,out),绑定鼠标悬浮与移除
+	//设置图片初始化透明度 --- 
+	$('img').fadeTo(1,0.2);
+	$('img').hover(function(){
+		$(this).fadeTo(1,1);
+	},function(){
+		$(this).fadeTo(1,0.2);
+	});
+/*	方法2：多绑定
+	$('img').bind({	
+		load:function(){
+			//设置图片初始化透明度为0.2
+			$(this).fadeTo(0,0.2)
+		},
+		mouseout:function(){
+			//鼠标离开事件
+			$(this).fadeTo(0,0.2);
+		},
+		mouseover:function(){
+			//鼠标悬浮
+			$(this).fadeTo(0,1);
+		}
+	});
+*/
+	
+});
+</script>
+</head>
+<body>
+
+<div id='box'>
+	<img src='t1.jpg'/>
+	<img src='t2.jpg'/>
+	<img src='t3.jpg'/>
+	<img src='t4.jpg'/>
+	<img src='t5.jpg'/>
+</div>
+
+</body>
+</html>

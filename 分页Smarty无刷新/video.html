@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>实现无刷新分页</title>
+<style type='text/css'>
+	#talk {width:600px;border:1px solid #ccc; border-collapse:collapse;font-size:12px; text-align:center; }
+	#talk tr th,td {border:1px solid #ccc;}
+	#talk tr td a { color:#000;text-decoration:none; cursor:pointer; }
+	
+</style>
+
+<script src='../frame2.js'></script>
+<script>
+function display(page){
+	//发送请求
+	$.get('fenye.php', 'page='+page,function(msg){
+		//将接受到模版文件直接输出到评论区中
+		$('discuss').innerHTML = msg;
+	});
+}
+	
+window.onload = function(){
+	//页面加载，直接载入评论
+	display(1);
+}
+</script>
+</head>
+<body>
+
+<embed src='' width='300' height='267' />
+<hr/>
+<div id='discuss'></div>
+</body>
+</html>

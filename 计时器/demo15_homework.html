@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	
+	<title>作业：计时器</title>
+		
+	<script src="public.js"></script>	
+	
+	<script type="text/javascript">
+		/*
+		需求：
+			1.点击开始，获取系统时间，显示在文本域中
+			2.点击结束，截取当下时间，固定在文本域中
+		 */
+		window.onload = function () {
+
+			//’开始‘事件
+			$('start').onclick = getTime;
+
+			//’停止‘事件
+			$('end').onclick = clearTime;
+		}
+
+		//定义全局变量，存放定时器
+		var setTime = 0;
+		//获取当前时间的函数
+		function getTime(){
+			//获取当前时间
+			var time = new Date();
+			//拼凑时分秒，写入文本域
+			$('txt').innerHTML = time.getHours() + '时' + time.getMinutes() + '分' + time.getSeconds() + '秒';
+
+			//设置定时器
+			setTime = setTimeout('getTime()',1000);
+		}
+		//停止定时器
+		function clearTime(){
+			//清理定时器
+			clearTimeout(setTime);
+		}
+
+	</script>
+
+</head>
+<body>
+	
+	<textarea id='txt'></textarea>
+	<br />
+	<input type="submit" id='start' value="开始"></input>
+	<input type="submit" id='end' value="停止"></input>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<words>
+
+	<word>
+		<cn>中国</cn>
+		<en>chinese</en>
+	</word>
+	
+	<word>
+		<cn>天气</cn>
+		<en>weather</en>
+	</word>
+	<word>
+		<cn>男孩</cn>
+		<en>boy</en>
+	</word>
+	<word>
+		<cn>女孩</cn>
+		<en>girl</en>
+	</word>
+	<word>
+		<cn>老的</cn>
+		<en>old</en>
+	</word>
+	<word>
+		<cn>男人</cn>
+		<en>man</en>
+	</word>
+	<word>
+		<cn>女人</cn>
+		<en>woman</en>
+	</word>
+
+<word><cn>篮球</cn><en>basketball</en></word><word><cn>足球</cn><en>football</en></word><word><cn>橄榄球</cn><en>rugby</en></word><word><cn>战争</cn><en>war</en></word><word><cn>历史</cn><en>history</en></word><word><cn>课程</cn><en>course</en></word><word><cn>跑</cn><en>run</en></word></words>

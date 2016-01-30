@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-->
+图书管理系统：图书相关信息的存储
+	编号、分类、封面、书名、作者、出版日期、ISBN、价格
+</!-->
+<!DOCTYPE libray [
+<!ELEMENT libray (book)*>
+<!ELEMENT book (sort , cover , title , author , publication , isbn , price)>
+<!ELEMENT sort (#PCDATA)>
+<!ELEMENT cover (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT publication (#PCDATA)>
+<!ELEMENT isbn (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ATTLIST book id ID #IMPLIED>
+]>
+<libray>
+	
+	<book id="b1">
+		<sort>武侠小说</sort>
+		<cover>images/1.png</cover>
+		<title>《射雕英雄传》</title>
+		<author>金庸</author>
+		<publication>1995-2-3</publication>
+		<isbn>1995-2-2</isbn>
+		<price>25</price>
+	</book>
+	<book id="b2">
+		<sort>武侠小说</sort>
+		<cover>images/1.png</cover>
+		<title>《倚天屠龙记》</title>
+		<author>金庸</author>
+		<publication>1997-2-3</publication>
+		<isbn>1997-2-2</isbn>
+		<price>35</price>
+	</book>
+<book id="b3"><sort>玄幻小说</sort><cover>images/1.png</cover><title>《神墓》</title><author>辰东</author><publication>2005-2-2</publication><isbn>2005-2-2</isbn><price>34</price></book>
+
+
+
+
+
+
+</libray>

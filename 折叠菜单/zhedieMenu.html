@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>折叠菜单</title>
+<style type='text/css'>
+div {margin:0;padding:0;width:250px;border:1px solid #8080ff}
+.menu{height:35px;background-color:#8080ff;line-height:35px;color:#fff;font-weight:bold}
+.product{height:100px;}
+</style>
+<script src='jquery.js'></script>
+<script>
+$(function(){
+/*
+ * 1、初始化，让所有菜单收缩
+ * 2、默认显示第一个菜单
+ * 3、点击菜单栏打开菜单，其余菜单关闭
+ */
+	//1、初始化
+	//方法1：$('.product').hide();
+	//方法2：
+	$('.menu').next(0).hide(); 
+	
+	//2、默认显示第一个菜单列表
+	$('.product').eq(0).show();
+	
+	//3、点击菜单显示，其余菜单关闭
+	$('.menu').bind('click',function(){
+		//方法1：a、隐藏所有菜单   b、打开被点击菜单下面的列表
+		//a
+		//$('.menu').next(0).hide();
+		//b
+		//$(this).next(0).show();
+		
+		//方法2：a、当前菜单栏的其余菜单列表全部隐藏     b、显示当前菜单栏的列表
+		$(this).siblings('.product').hide();
+		$(this).next(0).show();
+	});
+	
+	
+});
+</script>
+</head>
+<body>
+
+<div class='menu'>产品管理1</div>
+<div class='product'>
+新产品<br/>
+新产品<br/>
+新产品<br/>
+</div>
+
+<div class='menu'>产品管理2</div>
+<div class='product'>
+新产品<br/>
+新产品<br/>
+新产品<br/>
+</div>
+
+<div class='menu'>产品管理3</div>
+<div class='product'>
+新产品<br/>
+新产品<br/>
+新产品<br/>
+</div>
+<div class='menu'>产品管理4</div>
+<div class='product'>
+新产品<br/>
+新产品<br/>
+新产品<br/>
+</div>
+</body>
+</html>

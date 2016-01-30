@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>仿hao123侧边导航</title>
+<style type='text/css'>
+*{margin:0;padding:0;}
+ul{margin-top:50px}
+ul li{list-style:none;}
+ul li{margin:10px 0 5px 5px}
+img{margin:0;padding:0;}
+#slide{width:50px;height:100%;position:absolute;left:0;background:#E6E6E6}
+#go{position:fixed;bottom:50px}
+</style>
+<script src='jquery.js'></script>
+<script>
+$(function(){
+	//自定义动画，实现效果
+	$('#go').toggle(function(){
+		//横坐标-50
+		$('#slide').animate({
+			left:-50
+		},1000,function(){
+			//当菜单改变后，才改变方向键
+			$('#go > img').attr('src','right.jpg');
+		});
+		
+		
+	},function(){
+		//横坐标回到0
+		$('#slide').animate({
+			left:0
+		},1000,function(){
+			//当菜单改变后，才改变方向键
+			$('#go > img').attr('src','left.jpg');
+		});
+		
+	});
+});
+</script>
+</head>
+<body>
+
+<div id='slide'>
+	<ul>
+		<li><img src='dongman.png'/></li>
+		<li><img src='retie.png'/></li>
+		<li><img src='meng.png'/></li>
+		<li><img src='wlj.png'/></li>
+		<li><img src='lol.png'/></li>
+	</ul>
+</div>
+<div id='go'><img src='left.jpg'/></div>
+
+</body>
+</html>

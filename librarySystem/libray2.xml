@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-->
+图书管理系统：图书相关信息的存储
+	编号、分类、封面、书名、作者、出版日期、ISBN、价格
+</!-->
+<libray>
+	
+	<book id="1">
+		<sort>武侠小说</sort>
+		<cover>images/1.png</cover>
+		<title>《射雕英雄传》</title>
+		<author>金庸</author>
+		<publication>1995-2-3</publication>
+		<isbn>1995-2-2</isbn>
+		<price>25</price>
+	</book>
+	<book id="2">
+		<sort>武侠小说</sort>
+		<cover>images/1.png</cover>
+		<title>《倚天屠龙记》</title>
+		<author>金庸</author>
+		<publication>1997-2-3</publication>
+		<isbn>1997-2-2</isbn>
+		<price>35</price>
+	</book>
+<book id="3"><sort>武侠小说</sort><cover>images/1.png</cover><title>《鹿鼎记》</title><author>金庸</author><publication>2001-2-3</publication><isbn>2001-2-2</isbn><price>34</price></book></libray>

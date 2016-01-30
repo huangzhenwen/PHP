@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>分级联动菜单</title>
+<script src='frame.js'></script>
+<script>
+//获取父级分类目录函数
+function c1(){
+	//发送Ajax请求， 获取一级分类目录
+	$.get('menu.php','parentID=0',function(msg){
+		//遍历添加到选项中
+		for(var i=0; i<msg.length; i++){
+			//生成Option选项
+			var op = new Option(msg[i].c_name,msg[i].c_id);
+			//追加op对象到下拉框中
+			$('c1').options.add(op);
+		}	
+		
+	},'json');
+	
+	//获取子分类目录
+	$('c1').onchange = function(){
+		//获取被点击的父分类的id
+		var parentID = $('c1').value;
+		
+		//当点击强选择时候，回复原来
+		if(parentID==-1){
+			$('c2').length=0;
+			$('c2').options.add(new Option('请选择',-1));
+			return 1;
+		}
+		
+		//发送get请求，获取子分类
+		$.get('menu.php','parentID='+parentID,function(msg){
+			//清空子分类
+			$('c2').length = 0;
+			
+			//遍历子分类
+			for(var i=0; i<msg.length; i++){
+				//生成Option选项
+				var op = new Option(msg[i].c_name,msg[i].c_id);
+				//追加到c2下拉框中
+				$('c2').options.add(op);
+			}
+		}, 'json');
+		
+	};
+}
+
+	
+window.onload = function(){
+	//获取父类目录
+	c1();
+};
+</script>
+</head>
+<body>
+
+<select id='c1'>
+	<option value='-1'>请选择</option>
+</select>
+
+<select id='c2'>
+	<option value='-1'>请选择</option>
+</select>
+</body>
+</html>

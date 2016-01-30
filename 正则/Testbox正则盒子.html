@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>正则表达式工具盒</title>
+
+<script>
+	function $(id){		return document.getElementById(id);  } //公共方法：获取dom对象
+	
+	//定义页面加载事件
+	window.onload = function(){
+		//test()方法
+		$('btnTest').onclick = function(){
+			var str = $('content').value; //获取内容
+			var reg = eval( '/' + $('reg').value + '/gi;' ) ; //获取正则表达式，通过函数eval转为脚本执行
+			$('res').value = reg.test(str); //执行
+		}
+		
+		//exec()方法
+		$('btnExec').onclick = function(){
+			var str = $('content').value; //获取内容
+			var reg = eval( '/' + $('reg').value + '/gi;' ) ; //获取正则表达式，通过函数eval转为脚本执行
+			var r ; //定义变量，接受读取出来的匹配数据
+			$('res').value = ''; //清空原有的数据
+			while(r = reg.exec(str)){
+				$('res').value += r + '\n';
+			}			
+		}
+		
+		//search()--- 返回位置下标,从0计算
+		$('btnSearch').onclick = function(){
+			var str = $('content').value; //获取内容
+			var reg = eval( '/' + $('reg').value + '/gi;' ) ; //获取正则表达式，通过函数eval转为脚本执行
+			$('res').value = str.search(reg);//返回位置下标
+		}
+		
+		//match() -- 返回数组
+		$('btnMatch').onclick = function(){
+			var str = $('content').value; //获取内容
+			var reg = eval( '/' + $('reg').value + '/gi;' ) ; //获取正则表达式，通过函数eval转为脚本执行
+			$('res').value = str.match(reg);
+		}
+		
+		//replace() -- 替换匹配到的字符，暂时统一替换为型号 * 
+		$('btnReplace').onclick = function(){
+			var str = $('content').value; //获取内容
+			var reg = eval( '/' + $('reg').value + '/gi;' ) ; //获取正则表达式，通过函数eval转为脚本执行
+			$('res').value = str.replace(reg,'$1****$2');	//转换电话号码中间4位为星号，replace的2参中可以获取子表达式的缓存$1和$2来还原数字。
+		}
+		
+		//split() -- 以匹配的结果为分隔依据
+		$('btnSplit').onclick = function(){
+			var str = $('content').value; //获取内容
+			var reg = eval( '/' + $('reg').value + '/gi;' ) ; //获取正则表达式，通过函数eval转为脚本执行
+			$('res').value = str.split(reg);
+			
+		}
+		
+	}
+	
+</script>
+
+</head>
+
+<body>
+内容：<input type='text' id='content' size='40'/>
+<hr/>
+正则：<input type='text' id='reg' size='40' />
+<hr/>
+<textarea id='res' cols='50' rows='8'></textarea>
+<br/><br/>
+<input type='button' id='btnTest' value='test()'/>
+<input type='button' id='btnExec' value='exec()'/>
+
+<input type='button' id='btnSearch' value='search()'/>
+<input type='button' id='btnMatch' value='match()'/>
+<input type='button' id='btnReplace' value='replace()'/>
+<input type='button' id='btnSplit' value='split()'/>
+</body>
+</html>
